@@ -3,6 +3,7 @@
 Simple tool coded in Javascript which allows you to create a Census from a CPAS comma separated value (.csv) file 
 Will also sort out patients by Ward, calcualte their age and shortest ward round route possible (based of ward locations in Q2 2021).
 
+*Mock data (Identification Numbers, Gender, DOB, Locality, LOS & Location) used in the following images for data protection purposes.*
 
 ## Instructions
 
@@ -17,4 +18,4 @@ Will also sort out patients by Ward, calcualte their age and shortest ward round
 
 ## Example of a Census
 ![alt text](https://github.com/jpxue/MDH_Census_Creation/blob/main/output-example.PNG)
-*Mock data (identification numbers, LOS, Location) used for data protection purposes.*
+
