@@ -19,6 +19,10 @@ Will calculate the patient's age and sort out the patients by shortest ward roun
 ## Example of a Census
 ![alt text](https://github.com/jpxue/MDH_Tools/blob/main/MDH_CPAS_Census/output-example.PNG)
 
+Demo: https://jpxue.github.io/MDH_Tools/MDH_CPAS_Census/index.html
+
+
+
 
 
 # MCH Supervision Forms
@@ -34,3 +38,5 @@ Simple JS script embedded in an HTML document to fill in MCH Supervision Forms (
 
 
 ![Alt Text](https://github.com/jpxue/MDH_Tools/blob/main/MCH_Supervision_Forms/how-to-use.gif)
+
+Demo: https://jpxue.github.io/MDH_Tools/MCH_Supervision_Forms/index.html
