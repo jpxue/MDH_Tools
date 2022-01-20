@@ -156,6 +156,9 @@
                     linesAdded++;
                 }
             });
+            
+            ctx.font = "72px Verdana";
+            ctx.fillText("No Exceptions", 1530, 2125);
 
             var is_valid_level = false;
             ctx.lineWidth = 5;
@@ -177,11 +180,6 @@
                     break;
             }
 
-            //if (is_valid_level) {
-                ctx.font = "72px Verdana";
-                ctx.fillText("No Exceptions", 1530, 2125);
-                //ctx.fillText(`Level ${level}`, 1530, 2125);
-            //}
         }
     }
 
