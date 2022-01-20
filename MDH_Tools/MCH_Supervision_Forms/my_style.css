@@ -1,0 +1,64 @@
+html {
+    font-size: 16px;
+}
+
+
+body {
+	height: 100vh;
+	background-color: #05e8ba;
+	background-image: linear-gradient(315deg, #05e8ba 0%, #087ee1 74%);
+}
+
+.input-style {
+  padding: 13px;
+  border: #CCC 1px solid;
+  border-radius: 4px;
+  width: 100%;
+  font-size: 14px;
+}
+
+.input-style-small {
+  padding: 13px;
+  border: #CCC 1px solid;
+  border-radius: 4px;
+  width: 100%;
+  font-size: 11px;
+}
+
+.form-head {
+  color: #267ae7;
+  font-weight: normal;
+  font-weight: 500;
+  margin: 0;
+  text-align: center;    
+  font-size: 1.8em;
+}
+
+
+.form-main {
+  background: #ffffff;
+  border-spacing: initial;
+  margin: 15px auto;
+  word-break: break-word;
+  table-layout: auto;
+  line-height: 1.8em;
+  color: #333;
+  border-radius: 20px;
+  padding: 20px 40px;
+  width: 500px;
+  border: 1px solid;
+  border-color: #e5e6e9 #dfe0e4 #d0d1d5;
+}
+
+.form-main .field-column {
+  padding: 25px 0px;
+}
+
+/* Hide Header + Footer on Print */
+@media print {
+  @page { margin:0;
+    size: 2480px 3508px; }
+  body { margin: 1.6cm; }
+  .pagebreak { page-break-before: always; } /* page-break-after works, as well */
+  .noprint { display: none; }
+}
