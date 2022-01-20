@@ -144,19 +144,20 @@
                 ctx.fillText(designation, 890, 2690); //reason for supervision
             }
 
+            if(reason != null && reason.length > 1){
+                ctx.font = "48px Verdana";
+                var reasons = SplitIntoLengths(reason, 64);
+                var reasonY = 1370;
+                var linesAdded = 0;
+                reasons.forEach(function (str) {
+                    if (linesAdded <= 4) { //4 max lines
+                        ctx.fillText(str, 520, reasonY); //reason for supervision
+                        reasonY += 70;
+                        linesAdded++;
+                    }
+                });
+            }
 
-            ctx.font = "48px Verdana";
-            var reasons = SplitIntoLengths(reason, 64);
-            var reasonY = 1370;
-            var linesAdded = 0;
-            reasons.forEach(function (str) {
-                if (linesAdded <= 4) { //4 max lines
-                    ctx.fillText(str, 520, reasonY); //reason for supervision
-                    reasonY += 70;
-                    linesAdded++;
-                }
-            });
-            
             ctx.font = "72px Verdana";
             ctx.fillText("No Exceptions", 1530, 2125);
 
