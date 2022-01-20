@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supervision Forms</title>
+</head>
+
+<body>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="my_style.css">
+
+    <div id="form-main" class="form-main">
+        <div class="form-head">MCH Supervision Forms</div>
+        <div class="field-column">
+
+            <label for="lbl-date">Date:</label>
+            <input class="input-style" type="date" id="date-picker"><br>
+
+            <label>Default Ward:</label>
+            <input class="input-style" type="text" id="txt-ward" value=""><br><br>
+
+            <label>Signee Name:</label>
+            <input class="input-style" type="text" id="txt-signature" value=""><br>
+
+            <label>Signee Grade:</label>
+            <input class="input-style" type="text" id="txt-designation" value=""><br><br>
+
+            <textarea class="input-style-small" id="txt-area" rows="5" cols="50">
+            </textarea><br>
+        </div>
+
+        <input type="submit" value="Submit" onclick="Submit()" />
+
+        <div id="Forms"></div>
+
+        <br>
+    </div>
+    <!--<img id="img1" style="display:none;" src='page1_300dpi_braces.jpg' /> -->
+</body>
+
+<script type="text/javascript">
+
+    document.getElementById('date-picker').valueAsDate = new Date();
+
+    function Submit() {
+        var str = document.getElementById("txt-area").value;
+        var lines = str.split(/\r?\n/);
+
+        lines.forEach(function (item, index) {
+            var items = item.trim().split("\t");
+            console.log(items);
+            if (items.length >= 3) {
+                if(items[0].toLowerCase() == "name" && items[1].toLowerCase() == "surname"){
+                    return;
+                }
+
+                var name = items[0];
+                var surname = items[1];
+                var id = items[2];
+                var level = items[3];
+                var ward = items[4];
+                var reason = items[5];
+
+                if(ward == ""){
+                    ward = document.getElementById('txt-ward').value;
+                }
+
+                AddPage1(name, surname, id, level, reason,
+                    document.getElementById('date-picker').value, ward,
+                    document.getElementById('txt-signature').value, document.getElementById('txt-designation').value);
+
+                AddPage2();
+            }
+        });
+
+        document.getElementById('form-main').style.display = "none";
+    }
+
+
+    function AddPage2() {
+        var canvas = document.createElement('canvas');
+        document.body.appendChild(canvas);
+
+        img2 = new Image();
+        img2.src = 'page2_300dpi.jpg';
+        img2.onload = function () {
+            canvas.width = img2.width;
+            canvas.crossOrigin = "Anonymous";
+            canvas.height = img2.height;
+            ctx = canvas.getContext('2d');
+            ctx.drawImage(img2, 0, 0);
+        };
+    }
+
+    function SplitIntoLengths(str, size) {
+        var regex = new RegExp(String.raw`\S.{1,${size}}\S(?= |$)`, 'g');
+        var chunks = str.match(regex);
+        return chunks;
+    }
+
+    function AddPage1(name, surname, id, level, reason, date, ward, signature, designation) {
+        console.log(`Processing ${name} ${surname} of ID ${id}`);
+
+        var canvas = document.createElement('canvas');
+        document.body.appendChild(canvas);
+
+        img1 = new Image();
+        img1.src = 'page1_300dpi_braces.jpg';
+        img1.onload = function () {
+            canvas.width = img1.width;
+            canvas.crossOrigin = "Anonymous";
+            canvas.height = img1.height;
+            ctx = canvas.getContext('2d');
+            ctx.drawImage(img1, 0, 0);
+
+
+            ctx.font = "42px Verdana";
+            ctx.fillStyle = "red";
+            ctx.fillText(`${name} ${surname}`, 780, 670); //name
+            ctx.fillText(id, 1550, 670); //id
+            ctx.fillText(ward, 1540, 750); //ward
+
+
+            var str_date = "";
+            var dt_parts = date.trim().split("-");
+            if (dt_parts.length == 3) {
+                str_date = `${dt_parts[2]}/${dt_parts[1]}/${dt_parts[0]}`;
+            } else {
+                dt = new Date(date);
+                str_date = [dt.getDate(), dt.getMonth(), dt.getYear()].join("/"); //format to DD/mm/YYYY
+            }
+
+            ctx.fillText(str_date, 1670, 910); //date of prescription
+            ctx.fillText(new Date().toTimeString().slice(0, 8), 1670, 990); //time of request
+
+
+            if (signature != '') {
+                ctx.fillText(signature, 1690, 2610); //reason for supervision
+            }
+
+            if (designation != '') {
+                ctx.fillText(designation, 890, 2690); //reason for supervision
+            }
+
+
+            ctx.font = "48px Verdana";
+            var reasons = SplitIntoLengths(reason, 64);
+            var reasonY = 1370;
+            var linesAdded = 0;
+            reasons.forEach(function (str) {
+                if (linesAdded <= 4) { //4 max lines
+                    ctx.fillText(str, 520, reasonY); //reason for supervision
+                    reasonY += 70;
+                    linesAdded++;
+                }
+            });
+
+            var is_valid_level = false;
+            ctx.lineWidth = 5;
+            switch (level) {
+                case '1':
+                    ctx.ellipse(835, 1150, 150, 50, 0, 0, 2 * Math.PI)
+                    ctx.stroke();
+                    is_valid_level = true;
+                    break;
+                case '2':
+                    ctx.ellipse(1300, 1160, 150, 60, 0, 0, 2 * Math.PI)
+                    ctx.stroke();
+                    is_valid_level = true;
+                    break;
+                case '3':
+                    ctx.ellipse(1770, 1150, 150, 60, 0, 0, 2 * Math.PI)
+                    ctx.stroke();
+                    is_valid_level = true;
+                    break;
+            }
+
+            //if (is_valid_level) {
+                ctx.font = "72px Verdana";
+                ctx.fillText("No Exceptions", 1530, 2125);
+                //ctx.fillText(`Level ${level}`, 1530, 2125);
+            //}
+        }
+    }
+
+</script>
+
+</html>

@@ -1,0 +1,118 @@
+html {
+    font-size: 11px;
+}
+
+body {
+	height: 100vh;
+	background-color: #05e8ba;
+	background-image: linear-gradient(315deg, #05e8ba 0%, #087ee1 74%);
+}
+
+.demo-input-box {
+  padding: 13px;
+  border: #CCC 1px solid;
+  border-radius: 4px;
+  width: 100%;
+}
+.form-head {
+  color: #267ae7;
+  font-weight: normal;
+  font-weight: 500;
+  margin: 0;
+  text-align: center;    
+  font-size: 1.8em;
+}
+.form-subhead {
+  color: black;
+  font-weight: normal;
+  font-weight: 400;
+  margin: 0;
+  padding-bottom: 10px;
+  text-align: center;    
+  font-size: 1.25em;
+}
+
+.demo-table {
+  background: #ffffff;
+  border-spacing: initial;
+  margin: 15px auto;
+  word-break: break-word;
+  table-layout: auto;
+  line-height: 1.8em;
+  color: #333;
+  border-radius: 20px;
+  padding: 20px 40px;
+  width: 500px;
+  border: 1px solid;
+  border-color: #e5e6e9 #dfe0e4 #d0d1d5;
+}
+
+.demo-table .label {
+  color: #888888;
+}
+
+.demo-table .field-column {
+  padding: 15px 0px;
+}
+
+
+th {
+  display: table-cell;
+  vertical-align: inherit;
+  font-weight: bold;
+  text-align: center;
+}
+
+td {
+    /*border: 1px solid black;*/
+    color: black;
+    width: auto;
+}
+td.fitwidth {
+  width: 1px;
+  white-space: nowrap;
+}
+
+table{
+  max-width: auto;
+}
+
+h1 {
+  display: block;
+  font-size: 150%;
+  opacity: 1.0;
+}
+h2 {
+  display: block;
+  font-size: 125%;
+  opacity: 0.60;
+}
+h3 {
+  display: block;
+  font-size: 125%;
+  opacity: 1.0;
+}
+h4{
+  display: block;
+  font-size: 100%;
+  opacity: 0.75;
+}
+
+
+.alignleft {
+	float: left;
+}
+.aligncenter {
+	float: center;
+}
+.alignright {
+	float: right;
+}
+
+/* Hide Header + Footer on Print */
+@media print {
+  @page { margin: 0; }
+  body { margin: 1.6cm; }
+  .pagebreak { page-break-before: always; } /* page-break-after works, as well */
+  .noprint { display: none; }
+}
