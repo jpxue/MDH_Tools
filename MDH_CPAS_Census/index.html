@@ -235,7 +235,8 @@
         function GetBlueBlock() { //Obstetics Wonderland/Rainbow  Disneyland Paeds Day Care  Ophthalmic
             console.log("Populating Blue Block Wards...");
 
-            var minusOneFloor = new Floor(-1, [new Ward("MD DCUS", "Day Care Unit Surgery", null)]);
+            var minusOneFloor = new Floor(-1, [new Ward("MD DCUS", "Day Care Unit Surgery", null),
+                                              new Ward("MD DCUM", "Day Care Unit Medical", null)]);
 
             var groundFloor = new Floor(0, [new Ward("MD OB3", "Obstetric Ward 3", null),
             new Ward("MD NPICU", "Neonatal Paediatric Intensive Care Unit", null)]);
